@@ -22,31 +22,68 @@ class MainViewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
+        view.addGestureRecognizer(tapGestureRecognizer)
         // Do any additional setup after loading the view.
     }
-    
+    @objc func closeKeyboard() {
+           view.endEditing(true)
+       }
     func setupUI(){
         redom.setTitle("隨機", for: .normal)
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           textField.resignFirstResponder()
+           return true
+     }
     @IBAction func text(_ sender: UITextField) {
         switch sender.tag{
         case 0:
         if let RedStringValue = redvalue.text{
             if let RedIntValue = Int(RedStringValue){
+                if RedIntValue > 255{
+                    red.setValue(255, animated: true)
+                    redvalue.text = "\(Int(255))"
+                }else if RedIntValue < 0{
+                    red.setValue(0 , animated: true)
+                    redvalue.text="\(Int(0))"
+                }else{
                 red.setValue(Float(RedIntValue), animated: true)
+                    redvalue.text = "\(Int(RedIntValue))"
+                }
             }
         }
         case 1:
         if let GreenStringValue = greenvalue.text{
             if let GreenIntValue = Int(GreenStringValue){
-                green.setValue(Float(GreenIntValue), animated: true)
+                if GreenIntValue > 255{
+                    green.setValue(Float(GreenIntValue), animated: true)
+                    greenvalue.text = "\(Int(255))"
+                }else if GreenIntValue < 0{
+                    green.setValue(Float(GreenIntValue), animated: true)
+                    greenvalue.text = "\(Int(0))"
+                }
+                else{
+                    green.setValue(Float(GreenIntValue), animated: true)
+                    greenvalue.text = "\(Int(GreenIntValue))"
+                }
+                
             }
         }
         case 2:
         if let BlueStringValue = bluevalue.text{
             if let BlueIntValue = Int(BlueStringValue){
-                blue.setValue(Float(BlueIntValue), animated: true)
+                if BlueIntValue > 255{
+                    blue.setValue(Float(BlueIntValue), animated: true)
+                    bluevalue.text = "\(Int(255))"
+                }else if BlueIntValue < 0{
+                    blue.setValue(Float(BlueIntValue), animated: true)
+                    bluevalue.text = "\(Int(0))"
+                }else{
+                    blue.setValue(Float(BlueIntValue), animated: true)
+                    bluevalue.text = "\(Int(BlueIntValue))"
+                }
+                
             }
         }
         default:

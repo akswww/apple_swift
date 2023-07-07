@@ -51,6 +51,9 @@ class MainViewViewController: UIViewController {
                 red.setValue(Float(RedIntValue), animated: true)
                     redvalue.text = "\(Int(RedIntValue))"
                 }
+            }else if RedStringValue >= "a" || RedStringValue <= "z" || RedStringValue >= "A" || RedStringValue <= "Z" {
+                red.setValue(Float(0), animated: true)
+                redvalue.text = "\(Int(0))"
             }
         }
         case 1:
@@ -62,12 +65,13 @@ class MainViewViewController: UIViewController {
                 }else if GreenIntValue < 0{
                     green.setValue(Float(GreenIntValue), animated: true)
                     greenvalue.text = "\(Int(0))"
-                }
-                else{
+                }else{
                     green.setValue(Float(GreenIntValue), animated: true)
                     greenvalue.text = "\(Int(GreenIntValue))"
                 }
-                
+            }else if GreenStringValue >= "a" || GreenStringValue <= "z" || GreenStringValue >= "A" || GreenStringValue <= "Z" {
+                green.setValue(Float(0), animated: true)
+                greenvalue.text = "\(Int(0))"
             }
         }
         case 2:
@@ -84,6 +88,9 @@ class MainViewViewController: UIViewController {
                     bluevalue.text = "\(Int(BlueIntValue))"
                 }
                 
+            }else if BlueStringValue >= "a" || BlueStringValue <= "z" || BlueStringValue >= "A" || BlueStringValue <= "Z" {
+                blue.setValue(Float(0), animated: true)
+                bluevalue.text = "\(Int(0))"
             }
         }
         default:
